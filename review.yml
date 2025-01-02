@@ -1,4 +1,4 @@
-executed: '2024-12-16T00:02:37.457Z'
+executed: '2025-01-02T17:20:45.521Z'
 results:
   - code: apis-json-specification-aid-info
     message: There is an aid.
@@ -34,7 +34,7 @@ results:
         line: 2
         character: 5
       end:
-        line: 11
+        line: 12
         character: 41
   - code: apis-json-apis-baseURL-error
     message: APIs MUST Have a Base URL
@@ -47,7 +47,7 @@ results:
         line: 3
         character: 4
       end:
-        line: 11
+        line: 12
         character: 41
   - code: apis-json-apis-contact-error
     message: API COULD have a contact.
@@ -60,7 +60,7 @@ results:
         line: 3
         character: 4
       end:
-        line: 11
+        line: 12
         character: 41
   - code: apis-json-apis-tags-error
     message: API MUST Have a Tags Object
@@ -73,7 +73,7 @@ results:
         line: 3
         character: 4
       end:
-        line: 11
+        line: 12
         character: 41
   - code: apis-json-apis-aid-info
     message: API has an aid property.
@@ -143,7 +143,7 @@ results:
         line: 8
         character: 17
       end:
-        line: 11
+        line: 12
         character: 41
   - code: apis-json-name-info
     message: There is a name.
@@ -152,10 +152,10 @@ results:
     severity: 2
     range:
       start:
-        line: 12
+        line: 13
         character: 6
       end:
-        line: 12
+        line: 13
         character: 10
   - code: apis-json-tags-info
     message: There is a Tags Object
@@ -164,10 +164,10 @@ results:
     severity: 2
     range:
       start:
-        line: 13
+        line: 14
         character: 5
       end:
-        line: 14
+        line: 15
         character: 14
   - code: apis-json-tags-upper-case-info
     message: Tags Upper Case
@@ -177,10 +177,10 @@ results:
     severity: 2
     range:
       start:
-        line: 14
+        line: 15
         character: 4
       end:
-        line: 14
+        line: 15
         character: 14
   - code: apis-json-specification-type-info
     message: There is a specification type.
@@ -189,10 +189,10 @@ results:
     severity: 2
     range:
       start:
-        line: 15
+        line: 16
         character: 6
       end:
-        line: 15
+        line: 16
         character: 14
   - code: apis-json-image-info
     message: There is an image.
@@ -201,10 +201,10 @@ results:
     severity: 2
     range:
       start:
-        line: 16
+        line: 17
         character: 7
       end:
-        line: 16
+        line: 17
         character: 84
   - code: apis-json-created-info
     message: There is a created date.
@@ -213,10 +213,10 @@ results:
     severity: 2
     range:
       start:
-        line: 18
+        line: 19
         character: 9
       end:
-        line: 18
+        line: 19
         character: 35
   - code: apis-json-modified-info
     message: There is a modified date.
@@ -225,10 +225,10 @@ results:
     severity: 2
     range:
       start:
-        line: 19
+        line: 20
         character: 10
       end:
-        line: 19
+        line: 20
         character: 22
   - code: apis-json-description-info
     message: There is a description.
@@ -237,10 +237,10 @@ results:
     severity: 2
     range:
       start:
-        line: 21
+        line: 22
         character: 13
       end:
-        line: 25
+        line: 27
         character: 79
   - code: apis-json-maintainers-info
     message: There is a maintainer object.
@@ -249,10 +249,10 @@ results:
     severity: 2
     range:
       start:
-        line: 26
+        line: 28
         character: 12
       end:
-        line: 28
+        line: 30
         character: 33
   - code: apis-json-maintainers-fn-info
     message: There is a FN property for maintainers.
@@ -263,10 +263,10 @@ results:
     severity: 2
     range:
       start:
-        line: 27
+        line: 29
         character: 8
       end:
-        line: 27
+        line: 29
         character: 22
   - code: apis-json-maintainers-email-info
     message: There is a email property for maintainers.
@@ -277,10 +277,10 @@ results:
     severity: 2
     range:
       start:
-        line: 28
+        line: 30
         character: 11
       end:
-        line: 28
+        line: 30
         character: 33
   - code: apis-json-specification-version-info
     message: There is a specification version.
@@ -289,8 +289,8 @@ results:
     severity: 2
     range:
       start:
-        line: 29
+        line: 31
         character: 22
       end:
-        line: 29
+        line: 31
         character: 28
