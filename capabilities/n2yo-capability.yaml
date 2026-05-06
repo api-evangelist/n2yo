@@ -1,0 +1,286 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: N2YO Satellite Tracking API
+  description: The N2YO REST API provides data for software and web developers to build satellite tracking and prediction
+    applications. The REST API v1 is free but transaction limited. All endpoints require an apiKey query parameter.
+  tags:
+  - N2yo
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: n2yo
+    baseUri: https://api.n2yo.com/rest/v1/satellite
+    description: N2YO Satellite Tracking API HTTP API.
+    authentication:
+      type: apikey
+      in: query
+      name: apiKey
+      value: '{{N2YO_TOKEN}}'
+    resources:
+    - name: tle-id
+      path: /tle/{id}
+      operations:
+      - name: gettle
+        method: GET
+        description: Get TLE for a satellite
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: positions-id-observer-lat-observer-lng-observer-
+      path: /positions/{id}/{observer_lat}/{observer_lng}/{observer_alt}/{seconds}
+      operations:
+      - name: getpositions
+        method: GET
+        description: Get satellite positions
+        inputParameters:
+        - name: seconds
+          in: path
+          type: integer
+          required: true
+          description: Number of future seconds to return (max 300).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: visualpasses-id-observer-lat-observer-lng-observ
+      path: /visualpasses/{id}/{observer_lat}/{observer_lng}/{observer_alt}/{days}/{min_visibility}
+      operations:
+      - name: getvisualpasses
+        method: GET
+        description: Get visual passes
+        inputParameters:
+        - name: days
+          in: path
+          type: integer
+          required: true
+          description: Days of prediction (max 10).
+        - name: min_visibility
+          in: path
+          type: integer
+          required: true
+          description: Minimum visible seconds for a returned pass.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: radiopasses-id-observer-lat-observer-lng-observe
+      path: /radiopasses/{id}/{observer_lat}/{observer_lng}/{observer_alt}/{days}/{min_elevation}
+      operations:
+      - name: getradiopasses
+        method: GET
+        description: Get radio passes
+        inputParameters:
+        - name: days
+          in: path
+          type: integer
+          required: true
+          description: Days of prediction (max 10).
+        - name: min_elevation
+          in: path
+          type: integer
+          required: true
+          description: Minimum elevation in degrees.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: above-observer-lat-observer-lng-observer-alt-sea
+      path: /above/{observer_lat}/{observer_lng}/{observer_alt}/{search_radius}/{category_id}
+      operations:
+      - name: getabove
+        method: GET
+        description: What's up - satellites overhead
+        inputParameters:
+        - name: search_radius
+          in: path
+          type: integer
+          required: true
+          description: Search radius in degrees (0-90).
+        - name: category_id
+          in: path
+          type: integer
+          required: true
+          description: Satellite category id (0 returns all categories).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: n2yo-rest
+    description: REST adapter for N2YO Satellite Tracking API.
+    resources:
+    - path: /tle/{id}
+      name: gettle
+      operations:
+      - method: GET
+        name: gettle
+        description: Get TLE for a satellite
+        call: n2yo.gettle
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /positions/{id}/{observer_lat}/{observer_lng}/{observer_alt}/{seconds}
+      name: getpositions
+      operations:
+      - method: GET
+        name: getpositions
+        description: Get satellite positions
+        call: n2yo.getpositions
+        with:
+          seconds: rest.seconds
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /visualpasses/{id}/{observer_lat}/{observer_lng}/{observer_alt}/{days}/{min_visibility}
+      name: getvisualpasses
+      operations:
+      - method: GET
+        name: getvisualpasses
+        description: Get visual passes
+        call: n2yo.getvisualpasses
+        with:
+          days: rest.days
+          min_visibility: rest.min_visibility
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /radiopasses/{id}/{observer_lat}/{observer_lng}/{observer_alt}/{days}/{min_elevation}
+      name: getradiopasses
+      operations:
+      - method: GET
+        name: getradiopasses
+        description: Get radio passes
+        call: n2yo.getradiopasses
+        with:
+          days: rest.days
+          min_elevation: rest.min_elevation
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /above/{observer_lat}/{observer_lng}/{observer_alt}/{search_radius}/{category_id}
+      name: getabove
+      operations:
+      - method: GET
+        name: getabove
+        description: What's up - satellites overhead
+        call: n2yo.getabove
+        with:
+          search_radius: rest.search_radius
+          category_id: rest.category_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: n2yo-mcp
+    transport: http
+    description: MCP adapter for N2YO Satellite Tracking API for AI agent use.
+    tools:
+    - name: gettle
+      description: Get TLE for a satellite
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: n2yo.gettle
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getpositions
+      description: Get satellite positions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: n2yo.getpositions
+      with:
+        seconds: tools.seconds
+      inputParameters:
+      - name: seconds
+        type: integer
+        description: Number of future seconds to return (max 300).
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getvisualpasses
+      description: Get visual passes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: n2yo.getvisualpasses
+      with:
+        days: tools.days
+        min_visibility: tools.min_visibility
+      inputParameters:
+      - name: days
+        type: integer
+        description: Days of prediction (max 10).
+        required: true
+      - name: min_visibility
+        type: integer
+        description: Minimum visible seconds for a returned pass.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getradiopasses
+      description: Get radio passes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: n2yo.getradiopasses
+      with:
+        days: tools.days
+        min_elevation: tools.min_elevation
+      inputParameters:
+      - name: days
+        type: integer
+        description: Days of prediction (max 10).
+        required: true
+      - name: min_elevation
+        type: integer
+        description: Minimum elevation in degrees.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getabove
+      description: What's up - satellites overhead
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: n2yo.getabove
+      with:
+        search_radius: tools.search_radius
+        category_id: tools.category_id
+      inputParameters:
+      - name: search_radius
+        type: integer
+        description: Search radius in degrees (0-90).
+        required: true
+      - name: category_id
+        type: integer
+        description: Satellite category id (0 returns all categories).
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    N2YO_TOKEN: N2YO_TOKEN
