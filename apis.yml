@@ -49,9 +49,9 @@ common:
     url: https://www.n2yo.com/login/
   - type: Contact
     url: https://www.n2yo.com/contact/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.n2yo.com/privacy/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.n2yo.com/terms/
 maintainers:
   - FN: Kin Lane
