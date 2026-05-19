@@ -1,0 +1,89 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: N2YO Satellite Tracking API — Above
+  description: 'N2YO Satellite Tracking API — Above. 1 operations. Lead operation: What''s up - satellites overhead. Self-contained
+    Naftiko capability covering one N2yo business surface.'
+  tags:
+  - N2yo
+  - Above
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    N2YO_API_KEY: N2YO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: n2yo-above
+    baseUri: https://api.n2yo.com/rest/v1/satellite
+    description: N2YO Satellite Tracking API — Above business capability. Self-contained, no shared references.
+    resources:
+    - name: above-observer_lat-observer_lng-observer_alt-search_radius-category_id
+      path: /above/{observer_lat}/{observer_lng}/{observer_alt}/{search_radius}/{category_id}
+      operations:
+      - name: getabove
+        method: GET
+        description: What's up - satellites overhead
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: search_radius
+          in: path
+          type: integer
+          description: Search radius in degrees (0-90).
+          required: true
+        - name: category_id
+          in: path
+          type: integer
+          description: Satellite category id (0 returns all categories).
+          required: true
+    authentication:
+      type: apikey
+      key: apiKey
+      value: '{{env.N2YO_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: n2yo-above-rest
+    port: 8080
+    description: REST adapter for N2YO Satellite Tracking API — Above. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/above/{observer-lat}/{observer-lng}/{observer-alt}/{search-radius}/{category-id}
+      name: above-observer-lat-observer-lng-observer-alt-search-radius-category-id
+      description: REST surface for above-observer_lat-observer_lng-observer_alt-search_radius-category_id.
+      operations:
+      - method: GET
+        name: getabove
+        description: What's up - satellites overhead
+        call: n2yo-above.getabove
+        with:
+          search_radius: rest.search_radius
+          category_id: rest.category_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: n2yo-above-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for N2YO Satellite Tracking API — Above. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: what-s-up-satellites-overhead
+      description: What's up - satellites overhead
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: n2yo-above.getabove
+      with:
+        search_radius: tools.search_radius
+        category_id: tools.category_id
+      outputParameters:
+      - type: object
+        mapping: $.
