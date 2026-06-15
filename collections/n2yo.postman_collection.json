@@ -1,0 +1,901 @@
+{
+  "item": [
+    {
+      "id": "4deb452d-faa1-4bbb-97cf-eccb87fd0b40",
+      "name": "TLE",
+      "description": {
+        "content": "Two-Line Element data for satellites.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "af8c0687-7e35-432f-ac2d-0516425286bd",
+          "name": "Get TLE for a satellite",
+          "request": {
+            "name": "Get TLE for a satellite",
+            "description": {
+              "content": "Retrieves the Two Line Element set for a satellite by NORAD ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tle",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "(Required) Your N2YO API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) NORAD catalog number for the satellite."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3425e573-14cb-4d38-ad93-3f78778e8f51",
+              "name": "TLE data for the satellite.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tle",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) NORAD catalog number for the satellite."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"satid\": 158,\n    \"satname\": \"string\",\n    \"transactionscount\": 6038\n  },\n  \"tle\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b274758f-8b05-4cbd-8c90-d22d9965a944",
+      "name": "Positions",
+      "description": {
+        "content": "Future satellite positions over an observer location.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8b693b3d-224d-4b81-be11-476beac89eec",
+          "name": "Get satellite positions",
+          "request": {
+            "name": "Get satellite positions",
+            "description": {
+              "content": "Retrieves future positions of a satellite for the next N seconds (max 300) over an observer location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "positions",
+                ":id",
+                ":observer_lat",
+                ":observer_lng",
+                ":observer_alt",
+                ":seconds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "(Required) Your N2YO API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) NORAD catalog number for the satellite."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lat",
+                  "description": "(Required) Observer latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lng",
+                  "description": "(Required) Observer longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_alt",
+                  "description": "(Required) Observer altitude in meters above sea level."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "seconds",
+                  "description": "(Required) Number of future seconds to return (max 300)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c5b1eda-10cc-4700-97b9-b9958c216c55",
+              "name": "Position predictions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "positions",
+                    ":id",
+                    ":observer_lat",
+                    ":observer_lng",
+                    ":observer_alt",
+                    ":seconds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) NORAD catalog number for the satellite."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lat",
+                      "description": "(Required) Observer latitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lng",
+                      "description": "(Required) Observer longitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_alt",
+                      "description": "(Required) Observer altitude in meters above sea level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "seconds",
+                      "description": "(Required) Number of future seconds to return (max 300)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"satid\": 6820,\n    \"satname\": \"string\",\n    \"transactionscount\": 4530\n  },\n  \"positions\": [\n    {\n      \"satlatitude\": 8306.683077733207,\n      \"satlongitude\": 5588.950265942813,\n      \"sataltitude\": 598.4210521620637,\n      \"azimuth\": 3380.5604351648853,\n      \"elevation\": 389.54690244312087,\n      \"ra\": 4023.7299021184135,\n      \"dec\": 976.3558815304052,\n      \"timestamp\": 6318,\n      \"eclipsed\": false\n    },\n    {\n      \"satlatitude\": 7636.061867531694,\n      \"satlongitude\": 3867.152955554587,\n      \"sataltitude\": 2431.626554475559,\n      \"azimuth\": 7565.135355472582,\n      \"elevation\": 1392.6882215499825,\n      \"ra\": 8621.559194162912,\n      \"dec\": 8026.946395282029,\n      \"timestamp\": 1352,\n      \"eclipsed\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6ef600b0-cdd3-4c37-8243-a3a5d662a268",
+      "name": "Visual Passes",
+      "description": {
+        "content": "Optically visible satellite pass predictions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6be94380-4904-465a-829f-e636987d36e7",
+          "name": "Get visual passes",
+          "request": {
+            "name": "Get visual passes",
+            "description": {
+              "content": "Predicts optically visible satellite passes over an observer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visualpasses",
+                ":id",
+                ":observer_lat",
+                ":observer_lng",
+                ":observer_alt",
+                ":days",
+                ":min_visibility"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "(Required) Your N2YO API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) NORAD catalog number for the satellite."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lat",
+                  "description": "(Required) Observer latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lng",
+                  "description": "(Required) Observer longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_alt",
+                  "description": "(Required) Observer altitude in meters above sea level."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "days",
+                  "description": "(Required) Days of prediction (max 10)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "min_visibility",
+                  "description": "(Required) Minimum visible seconds for a returned pass."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b17b566-3ce0-400e-9a97-19606f67ec91",
+              "name": "Visual pass predictions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visualpasses",
+                    ":id",
+                    ":observer_lat",
+                    ":observer_lng",
+                    ":observer_alt",
+                    ":days",
+                    ":min_visibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) NORAD catalog number for the satellite."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lat",
+                      "description": "(Required) Observer latitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lng",
+                      "description": "(Required) Observer longitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_alt",
+                      "description": "(Required) Observer altitude in meters above sea level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "days",
+                      "description": "(Required) Days of prediction (max 10)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "min_visibility",
+                      "description": "(Required) Minimum visible seconds for a returned pass."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"satid\": 6127,\n    \"satname\": \"string\",\n    \"transactionscount\": 8136,\n    \"passescount\": 4633\n  },\n  \"passes\": [\n    {\n      \"startAz\": 1912.9631364963052,\n      \"startAzCompass\": \"string\",\n      \"startEl\": 6584.834011026875,\n      \"startUTC\": 3740,\n      \"maxAz\": 1971.8999085957712,\n      \"maxAzCompass\": \"string\",\n      \"maxEl\": 210.7022636525291,\n      \"maxUTC\": 8450,\n      \"endAz\": 906.2039284388768,\n      \"endAzCompass\": \"string\",\n      \"endEl\": 218.22184100156682,\n      \"endUTC\": 9260,\n      \"mag\": 426.73091485182056,\n      \"duration\": 9543\n    },\n    {\n      \"startAz\": 6205.681565916946,\n      \"startAzCompass\": \"string\",\n      \"startEl\": 7539.6968992778475,\n      \"startUTC\": 8728,\n      \"maxAz\": 4709.392985046175,\n      \"maxAzCompass\": \"string\",\n      \"maxEl\": 5351.566892095226,\n      \"maxUTC\": 6014,\n      \"endAz\": 5461.378515593092,\n      \"endAzCompass\": \"string\",\n      \"endEl\": 3931.5758790545783,\n      \"endUTC\": 960,\n      \"mag\": 9918.9567035536,\n      \"duration\": 7846\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ff6a69bb-912e-4dad-8916-f584364fce4b",
+      "name": "Radio Passes",
+      "description": {
+        "content": "Radio-communication satellite pass predictions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba4ef16e-f83b-4cc7-b654-e694e7a7c70e",
+          "name": "Get radio passes",
+          "request": {
+            "name": "Get radio passes",
+            "description": {
+              "content": "Predicts radio-communication passes for a satellite.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "radiopasses",
+                ":id",
+                ":observer_lat",
+                ":observer_lng",
+                ":observer_alt",
+                ":days",
+                ":min_elevation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "(Required) Your N2YO API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) NORAD catalog number for the satellite."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lat",
+                  "description": "(Required) Observer latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lng",
+                  "description": "(Required) Observer longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_alt",
+                  "description": "(Required) Observer altitude in meters above sea level."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "days",
+                  "description": "(Required) Days of prediction (max 10)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "min_elevation",
+                  "description": "(Required) Minimum elevation in degrees."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "285409b3-865c-42c6-9d20-7e1468dbc2ce",
+              "name": "Radio pass predictions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "radiopasses",
+                    ":id",
+                    ":observer_lat",
+                    ":observer_lng",
+                    ":observer_alt",
+                    ":days",
+                    ":min_elevation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) NORAD catalog number for the satellite."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lat",
+                      "description": "(Required) Observer latitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lng",
+                      "description": "(Required) Observer longitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_alt",
+                      "description": "(Required) Observer altitude in meters above sea level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "days",
+                      "description": "(Required) Days of prediction (max 10)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "min_elevation",
+                      "description": "(Required) Minimum elevation in degrees."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"satid\": 4302,\n    \"satname\": \"string\",\n    \"transactionscount\": 2195,\n    \"passescount\": 5722\n  },\n  \"passes\": [\n    {\n      \"startAz\": 5167.129916704622,\n      \"startAzCompass\": \"string\",\n      \"startUTC\": 9931,\n      \"maxAz\": 7906.58262892146,\n      \"maxAzCompass\": \"string\",\n      \"maxEl\": 9601.042630766826,\n      \"maxUTC\": 5603,\n      \"endAz\": 3671.8650501759266,\n      \"endAzCompass\": \"string\",\n      \"endUTC\": 6759\n    },\n    {\n      \"startAz\": 7609.983234485809,\n      \"startAzCompass\": \"string\",\n      \"startUTC\": 9406,\n      \"maxAz\": 1215.1979299794868,\n      \"maxAzCompass\": \"string\",\n      \"maxEl\": 7881.151110481596,\n      \"maxUTC\": 1006,\n      \"endAz\": 2746.876499642238,\n      \"endAzCompass\": \"string\",\n      \"endUTC\": 9223\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c663b27e-bdb8-47a5-9d95-62544365e46b",
+      "name": "Above",
+      "description": {
+        "content": "Satellites currently above an observer location.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ede00379-b8a3-4c6f-8160-fb27efa9de74",
+          "name": "What's up - satellites overhead",
+          "request": {
+            "name": "What's up - satellites overhead",
+            "description": {
+              "content": "Returns all satellites within a search radius above an observer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "above",
+                ":observer_lat",
+                ":observer_lng",
+                ":observer_alt",
+                ":search_radius",
+                ":category_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "(Required) Your N2YO API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lat",
+                  "description": "(Required) Observer latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lng",
+                  "description": "(Required) Observer longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_alt",
+                  "description": "(Required) Observer altitude in meters above sea level."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "search_radius",
+                  "description": "(Required) Search radius in degrees (0-90)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "category_id",
+                  "description": "(Required) Satellite category id (0 returns all categories)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba938e8e-70c5-4bc3-a3d3-b432cd9fc92d",
+              "name": "Satellites currently above the observer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "above",
+                    ":observer_lat",
+                    ":observer_lng",
+                    ":observer_alt",
+                    ":search_radius",
+                    ":category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lat",
+                      "description": "(Required) Observer latitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lng",
+                      "description": "(Required) Observer longitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_alt",
+                      "description": "(Required) Observer altitude in meters above sea level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "search_radius",
+                      "description": "(Required) Search radius in degrees (0-90)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "category_id",
+                      "description": "(Required) Satellite category id (0 returns all categories)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"category\": \"string\",\n    \"transactionscount\": 1544,\n    \"satcount\": 3818\n  },\n  \"above\": [\n    {\n      \"satid\": 3303,\n      \"satname\": \"string\",\n      \"intDesignator\": \"string\",\n      \"launchDate\": \"string\",\n      \"satlat\": 5699.637943154118,\n      \"satlng\": 7665.67856619913,\n      \"satalt\": 4378.964276931508\n    },\n    {\n      \"satid\": 527,\n      \"satname\": \"string\",\n      \"intDesignator\": \"string\",\n      \"launchDate\": \"string\",\n      \"satlat\": 9792.634334248878,\n      \"satlng\": 2514.262962830056,\n      \"satalt\": 7015.278855108605\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.n2yo.com/rest/v1/satellite",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "31ae8d26-97b6-4a5d-be42-fc1a246f5261",
+    "name": "N2YO Satellite Tracking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The N2YO REST API provides data for software and web developers to build satellite tracking and prediction applications. The REST API v1 is free but transaction limited. All endpoints require an apiKey query parameter.\n\nContact Support:\n Name: N2YO Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,291 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "N2YO Satellite Tracking API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TLE",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get TLE for a satellite",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.n2yo.com/rest/v1/satellite/tle/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "NORAD catalog number for the satellite."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Your N2YO API key."
+              }
+            ]
+          },
+          "docs": "Retrieves the Two Line Element set for a satellite by NORAD ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Positions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get satellite positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.n2yo.com/rest/v1/satellite/positions/:id/:observer_lat/:observer_lng/:observer_alt/:seconds",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "NORAD catalog number for the satellite."
+              },
+              {
+                "name": "observer_lat",
+                "value": "",
+                "type": "path",
+                "description": "Observer latitude in decimal degrees."
+              },
+              {
+                "name": "observer_lng",
+                "value": "",
+                "type": "path",
+                "description": "Observer longitude in decimal degrees."
+              },
+              {
+                "name": "observer_alt",
+                "value": "",
+                "type": "path",
+                "description": "Observer altitude in meters above sea level."
+              },
+              {
+                "name": "seconds",
+                "value": "",
+                "type": "path",
+                "description": "Number of future seconds to return (max 300)."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Your N2YO API key."
+              }
+            ]
+          },
+          "docs": "Retrieves future positions of a satellite for the next N seconds (max 300) over an observer location."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Visual Passes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get visual passes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.n2yo.com/rest/v1/satellite/visualpasses/:id/:observer_lat/:observer_lng/:observer_alt/:days/:min_visibility",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "NORAD catalog number for the satellite."
+              },
+              {
+                "name": "observer_lat",
+                "value": "",
+                "type": "path",
+                "description": "Observer latitude in decimal degrees."
+              },
+              {
+                "name": "observer_lng",
+                "value": "",
+                "type": "path",
+                "description": "Observer longitude in decimal degrees."
+              },
+              {
+                "name": "observer_alt",
+                "value": "",
+                "type": "path",
+                "description": "Observer altitude in meters above sea level."
+              },
+              {
+                "name": "days",
+                "value": "",
+                "type": "path",
+                "description": "Days of prediction (max 10)."
+              },
+              {
+                "name": "min_visibility",
+                "value": "",
+                "type": "path",
+                "description": "Minimum visible seconds for a returned pass."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Your N2YO API key."
+              }
+            ]
+          },
+          "docs": "Predicts optically visible satellite passes over an observer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Radio Passes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get radio passes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.n2yo.com/rest/v1/satellite/radiopasses/:id/:observer_lat/:observer_lng/:observer_alt/:days/:min_elevation",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "NORAD catalog number for the satellite."
+              },
+              {
+                "name": "observer_lat",
+                "value": "",
+                "type": "path",
+                "description": "Observer latitude in decimal degrees."
+              },
+              {
+                "name": "observer_lng",
+                "value": "",
+                "type": "path",
+                "description": "Observer longitude in decimal degrees."
+              },
+              {
+                "name": "observer_alt",
+                "value": "",
+                "type": "path",
+                "description": "Observer altitude in meters above sea level."
+              },
+              {
+                "name": "days",
+                "value": "",
+                "type": "path",
+                "description": "Days of prediction (max 10)."
+              },
+              {
+                "name": "min_elevation",
+                "value": "",
+                "type": "path",
+                "description": "Minimum elevation in degrees."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Your N2YO API key."
+              }
+            ]
+          },
+          "docs": "Predicts radio-communication passes for a satellite."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Above",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "What's up - satellites overhead",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.n2yo.com/rest/v1/satellite/above/:observer_lat/:observer_lng/:observer_alt/:search_radius/:category_id",
+            "params": [
+              {
+                "name": "observer_lat",
+                "value": "",
+                "type": "path",
+                "description": "Observer latitude in decimal degrees."
+              },
+              {
+                "name": "observer_lng",
+                "value": "",
+                "type": "path",
+                "description": "Observer longitude in decimal degrees."
+              },
+              {
+                "name": "observer_alt",
+                "value": "",
+                "type": "path",
+                "description": "Observer altitude in meters above sea level."
+              },
+              {
+                "name": "search_radius",
+                "value": "",
+                "type": "path",
+                "description": "Search radius in degrees (0-90)."
+              },
+              {
+                "name": "category_id",
+                "value": "",
+                "type": "path",
+                "description": "Satellite category id (0 returns all categories)."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Your N2YO API key."
+              }
+            ]
+          },
+          "docs": "Returns all satellites within a search radius above an observer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
