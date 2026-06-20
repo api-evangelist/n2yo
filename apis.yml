@@ -4,7 +4,7 @@ description: >-
   N2YO.com is a website that provides real-time tracking and information about satellites and space stations using space
   surveillance data from Space Track, operated by the US Air Force Space Command.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://www.n2yo.com/
 created: '2024-03-30'
 modified: '2026-05-19'
@@ -19,7 +19,7 @@ apis:
     description: >-
       The purpose of the API is to provide data for software/web developers to build satellite tracking or prediction
       applications. The REST API v1 is free but it is transaction limited.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.n2yo.com/api/
     baseURL: https://api.n2yo.com/rest/v1/satellite
     tags:
