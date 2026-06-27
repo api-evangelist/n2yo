@@ -31,7 +31,7 @@ apis:
         url: https://www.n2yo.com/api/
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/n2yo/main/openapi/n2yo-openapi.yml
-      - type: SignUp
+      - type: Signup
         url: https://www.n2yo.com/login/register/
       - type: Login
         url: https://www.n2yo.com/login/
@@ -43,7 +43,7 @@ common:
     url: https://github.com/n2yo
   - type: Website
     url: https://www.n2yo.com/
-  - type: SignUp
+  - type: Signup
     url: https://www.n2yo.com/login/register/
   - type: Login
     url: https://www.n2yo.com/login/
