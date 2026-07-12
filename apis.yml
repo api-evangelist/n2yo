@@ -39,6 +39,10 @@ apis:
       - FN: N2YO Support
         url: https://www.n2yo.com/contact/
 common:
+  - type: DomainSecurity
+    url: security/n2yo-domain-security.yml
+  - type: Authentication
+    url: authentication/n2yo-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/n2yo
   - type: Website
