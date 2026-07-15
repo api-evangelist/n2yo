@@ -39,6 +39,8 @@ apis:
       - FN: N2YO Support
         url: https://www.n2yo.com/contact/
 common:
+  - type: AgenticAccess
+    url: agentic-access/n2yo-agentic-access.yml
   - type: DomainSecurity
     url: security/n2yo-domain-security.yml
   - type: Authentication
