@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: N2YO Satellite Tracking Above TLE API
+  description: The N2YO REST API provides data for software and web developers to build satellite tracking and prediction applications. The REST API v1 is free but transaction limited. All endpoints require an apiKey query parameter.
+  version: 1.0.0
+  contact:
+    name: N2YO Support
+    url: https://www.n2yo.com/api/
+  license:
+    name: N2YO API Terms
+    url: https://www.n2yo.com/api/
+servers:
+- url: https://api.n2yo.com/rest/v1/satellite
+  description: Production server
+security:
+- apiKey: []
+tags:
+- name: TLE
+  description: Two-Line Element data for satellites.
+paths:
+  /tle/{id}:
+    get:
+      tags:
+      - TLE
+      summary: Get TLE for a satellite
+      description: Retrieves the Two Line Element set for a satellite by NORAD ID.
+      operationId: getTLE
+      parameters:
+      - $ref: '#/components/parameters/SatelliteId'
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: TLE data for the satellite.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TLEResponse'
+components:
+  schemas:
+    TLEResponse:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/SatelliteInfo'
+        tle:
+          type: string
+          description: Two Line Element set for the satellite.
+    SatelliteInfo:
+      type: object
+      properties:
+        satid:
+          type: integer
+        satname:
+          type: string
+        transactionscount:
+          type: integer
+  parameters:
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      description: Your N2YO API key.
+      schema:
+        type: string
+    SatelliteId:
+      name: id
+      in: path
+      required: true
+      description: NORAD catalog number for the satellite.
+      schema:
+        type: integer
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: apiKey

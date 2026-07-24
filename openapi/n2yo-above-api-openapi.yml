@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: N2YO Satellite Tracking Above API
+  description: The N2YO REST API provides data for software and web developers to build satellite tracking and prediction applications. The REST API v1 is free but transaction limited. All endpoints require an apiKey query parameter.
+  version: 1.0.0
+  contact:
+    name: N2YO Support
+    url: https://www.n2yo.com/api/
+  license:
+    name: N2YO API Terms
+    url: https://www.n2yo.com/api/
+servers:
+- url: https://api.n2yo.com/rest/v1/satellite
+  description: Production server
+security:
+- apiKey: []
+tags:
+- name: Above
+  description: Satellites currently above an observer location.
+paths:
+  /above/{observer_lat}/{observer_lng}/{observer_alt}/{search_radius}/{category_id}:
+    get:
+      tags:
+      - Above
+      summary: What's up - satellites overhead
+      description: Returns all satellites within a search radius above an observer.
+      operationId: getAbove
+      parameters:
+      - $ref: '#/components/parameters/ObserverLat'
+      - $ref: '#/components/parameters/ObserverLng'
+      - $ref: '#/components/parameters/ObserverAlt'
+      - name: search_radius
+        in: path
+        required: true
+        description: Search radius in degrees (0-90).
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 90
+      - name: category_id
+        in: path
+        required: true
+        description: Satellite category id (0 returns all categories).
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Satellites currently above the observer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AboveResponse'
+components:
+  schemas:
+    AboveSatellite:
+      type: object
+      properties:
+        satid:
+          type: integer
+        satname:
+          type: string
+        intDesignator:
+          type: string
+        launchDate:
+          type: string
+        satlat:
+          type: number
+        satlng:
+          type: number
+        satalt:
+          type: number
+    AboveResponse:
+      type: object
+      properties:
+        info:
+          type: object
+          properties:
+            category:
+              type: string
+            transactionscount:
+              type: integer
+            satcount:
+              type: integer
+        above:
+          type: array
+          items:
+            $ref: '#/components/schemas/AboveSatellite'
+  parameters:
+    ObserverLng:
+      name: observer_lng
+      in: path
+      required: true
+      description: Observer longitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    ObserverLat:
+      name: observer_lat
+      in: path
+      required: true
+      description: Observer latitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      description: Your N2YO API key.
+      schema:
+        type: string
+    ObserverAlt:
+      name: observer_alt
+      in: path
+      required: true
+      description: Observer altitude in meters above sea level.
+      schema:
+        type: number
+        format: float
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: apiKey

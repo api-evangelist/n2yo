@@ -1,0 +1,145 @@
+openapi: 3.0.3
+info:
+  title: N2YO Satellite Tracking Above Radio Passes API
+  description: The N2YO REST API provides data for software and web developers to build satellite tracking and prediction applications. The REST API v1 is free but transaction limited. All endpoints require an apiKey query parameter.
+  version: 1.0.0
+  contact:
+    name: N2YO Support
+    url: https://www.n2yo.com/api/
+  license:
+    name: N2YO API Terms
+    url: https://www.n2yo.com/api/
+servers:
+- url: https://api.n2yo.com/rest/v1/satellite
+  description: Production server
+security:
+- apiKey: []
+tags:
+- name: Radio Passes
+  description: Radio-communication satellite pass predictions.
+paths:
+  /radiopasses/{id}/{observer_lat}/{observer_lng}/{observer_alt}/{days}/{min_elevation}:
+    get:
+      tags:
+      - Radio Passes
+      summary: Get radio passes
+      description: Predicts radio-communication passes for a satellite.
+      operationId: getRadioPasses
+      parameters:
+      - $ref: '#/components/parameters/SatelliteId'
+      - $ref: '#/components/parameters/ObserverLat'
+      - $ref: '#/components/parameters/ObserverLng'
+      - $ref: '#/components/parameters/ObserverAlt'
+      - name: days
+        in: path
+        required: true
+        description: Days of prediction (max 10).
+        schema:
+          type: integer
+          maximum: 10
+      - name: min_elevation
+        in: path
+        required: true
+        description: Minimum elevation in degrees.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Radio pass predictions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadioPassesResponse'
+components:
+  parameters:
+    SatelliteId:
+      name: id
+      in: path
+      required: true
+      description: NORAD catalog number for the satellite.
+      schema:
+        type: integer
+    ObserverLng:
+      name: observer_lng
+      in: path
+      required: true
+      description: Observer longitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    ObserverLat:
+      name: observer_lat
+      in: path
+      required: true
+      description: Observer latitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      description: Your N2YO API key.
+      schema:
+        type: string
+    ObserverAlt:
+      name: observer_alt
+      in: path
+      required: true
+      description: Observer altitude in meters above sea level.
+      schema:
+        type: number
+        format: float
+  schemas:
+    SatelliteInfo:
+      type: object
+      properties:
+        satid:
+          type: integer
+        satname:
+          type: string
+        transactionscount:
+          type: integer
+    RadioPassesResponse:
+      type: object
+      properties:
+        info:
+          allOf:
+          - $ref: '#/components/schemas/SatelliteInfo'
+          - type: object
+            properties:
+              passescount:
+                type: integer
+        passes:
+          type: array
+          items:
+            $ref: '#/components/schemas/RadioPass'
+    RadioPass:
+      type: object
+      properties:
+        startAz:
+          type: number
+        startAzCompass:
+          type: string
+        startUTC:
+          type: integer
+        maxAz:
+          type: number
+        maxAzCompass:
+          type: string
+        maxEl:
+          type: number
+        maxUTC:
+          type: integer
+        endAz:
+          type: number
+        endAzCompass:
+          type: string
+        endUTC:
+          type: integer
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: apiKey
