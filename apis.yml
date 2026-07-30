@@ -4,7 +4,20 @@ description: >-
   N2YO.com is a website that provides real-time tracking and information about satellites and space stations using space
   surveillance data from Space Track, operated by the US Air Force Space Command.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/n2yo.png
 url: https://www.n2yo.com/
 created: '2024-03-30'
 modified: '2026-05-19'
@@ -14,30 +27,86 @@ tags:
   - Space
   - Tracking
 apis:
-  - aid: n2yo:n2yo-api
-    name: N2YO.com API
-    description: >-
-      The purpose of the API is to provide data for software/web developers to build satellite tracking or prediction
-      applications. The REST API v1 is free but it is transaction limited.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.n2yo.com/api/
-    baseURL: https://api.n2yo.com/rest/v1/satellite
-    tags:
-      - Satellites
-      - Space
-      - Tracking
-    properties:
-      - type: Documentation
-        url: https://www.n2yo.com/api/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/n2yo/main/openapi/n2yo-openapi.yml
-      - type: Signup
-        url: https://www.n2yo.com/login/register/
-      - type: Login
-        url: https://www.n2yo.com/login/
-    contact:
-      - FN: N2YO Support
-        url: https://www.n2yo.com/contact/
+- aid: n2yo:n2yo-above-api
+  name: N2YO Above API
+  description: Satellites currently above an observer location.
+  humanURL: https://www.n2yo.com/api/
+  baseURL: https://api.n2yo.com/rest/v1/satellite
+  tags:
+  - Above
+  properties:
+  - type: OpenAPI
+    url: openapi/n2yo-above-api-openapi.yml
+  - type: Documentation
+    url: https://www.n2yo.com/api/
+  - type: Signup
+    url: https://www.n2yo.com/login/register/
+  - type: Login
+    url: https://www.n2yo.com/login/
+- aid: n2yo:n2yo-positions-api
+  name: N2YO Positions API
+  description: Future satellite positions over an observer location.
+  humanURL: https://www.n2yo.com/api/
+  baseURL: https://api.n2yo.com/rest/v1/satellite
+  tags:
+  - Positions
+  properties:
+  - type: OpenAPI
+    url: openapi/n2yo-positions-api-openapi.yml
+  - type: Documentation
+    url: https://www.n2yo.com/api/
+  - type: Signup
+    url: https://www.n2yo.com/login/register/
+  - type: Login
+    url: https://www.n2yo.com/login/
+- aid: n2yo:n2yo-radio-passes-api
+  name: N2YO Radio Passes API
+  description: Radio-communication satellite pass predictions.
+  humanURL: https://www.n2yo.com/api/
+  baseURL: https://api.n2yo.com/rest/v1/satellite
+  tags:
+  - Radio Passes
+  properties:
+  - type: OpenAPI
+    url: openapi/n2yo-radio-passes-api-openapi.yml
+  - type: Documentation
+    url: https://www.n2yo.com/api/
+  - type: Signup
+    url: https://www.n2yo.com/login/register/
+  - type: Login
+    url: https://www.n2yo.com/login/
+- aid: n2yo:n2yo-tle-api
+  name: N2YO TLE API
+  description: Two-Line Element data for satellites.
+  humanURL: https://www.n2yo.com/api/
+  baseURL: https://api.n2yo.com/rest/v1/satellite
+  tags:
+  - TLE
+  properties:
+  - type: OpenAPI
+    url: openapi/n2yo-tle-api-openapi.yml
+  - type: Documentation
+    url: https://www.n2yo.com/api/
+  - type: Signup
+    url: https://www.n2yo.com/login/register/
+  - type: Login
+    url: https://www.n2yo.com/login/
+- aid: n2yo:n2yo-visual-passes-api
+  name: N2YO Visual Passes API
+  description: Optically visible satellite pass predictions.
+  humanURL: https://www.n2yo.com/api/
+  baseURL: https://api.n2yo.com/rest/v1/satellite
+  tags:
+  - Visual Passes
+  properties:
+  - type: OpenAPI
+    url: openapi/n2yo-visual-passes-api-openapi.yml
+  - type: Documentation
+    url: https://www.n2yo.com/api/
+  - type: Signup
+    url: https://www.n2yo.com/login/register/
+  - type: Login
+    url: https://www.n2yo.com/login/
 common:
   - type: AgenticAccess
     url: agentic-access/n2yo-agentic-access.yml
