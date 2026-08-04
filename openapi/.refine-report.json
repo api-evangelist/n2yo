@@ -1,0 +1,22 @@
+{
+  "provider": "n2yo",
+  "sources": [
+    "n2yo-above-api-openapi.yml",
+    "n2yo-positions-api-openapi.yml",
+    "n2yo-radio-passes-api-openapi.yml",
+    "n2yo-tle-api-openapi.yml",
+    "n2yo-visual-passes-api-openapi.yml"
+  ],
+  "outputs": [
+    "n2yo-above-api-openapi.yml",
+    "n2yo-positions-api-openapi.yml",
+    "n2yo-radio-passes-api-openapi.yml",
+    "n2yo-tle-api-openapi.yml",
+    "n2yo-visual-passes-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
