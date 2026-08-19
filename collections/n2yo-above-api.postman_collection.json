@@ -1,0 +1,217 @@
+{
+  "item": [
+    {
+      "id": "e60c9103-7491-4f5f-a231-6b05957f9c8e",
+      "name": "Above",
+      "description": {
+        "content": "Satellites currently above an observer location.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f47d85e2-b850-424b-ae33-d94f89637879",
+          "name": "What's up - satellites overhead",
+          "request": {
+            "name": "What's up - satellites overhead",
+            "description": {
+              "content": "Returns all satellites within a search radius above an observer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "above",
+                ":observer_lat",
+                ":observer_lng",
+                ":observer_alt",
+                ":search_radius",
+                ":category_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "(Required) Your N2YO API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lat",
+                  "description": "(Required) Observer latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lng",
+                  "description": "(Required) Observer longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_alt",
+                  "description": "(Required) Observer altitude in meters above sea level."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "search_radius",
+                  "description": "(Required) Search radius in degrees (0-90)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "category_id",
+                  "description": "(Required) Satellite category id (0 returns all categories)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b59fc7c-8741-422d-a921-e47741e77c98",
+              "name": "Satellites currently above the observer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "above",
+                    ":observer_lat",
+                    ":observer_lng",
+                    ":observer_alt",
+                    ":search_radius",
+                    ":category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lat",
+                      "description": "(Required) Observer latitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lng",
+                      "description": "(Required) Observer longitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_alt",
+                      "description": "(Required) Observer altitude in meters above sea level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "search_radius",
+                      "description": "(Required) Search radius in degrees (0-90)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "category_id",
+                      "description": "(Required) Satellite category id (0 returns all categories)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"category\": \"string\",\n    \"transactionscount\": 3760,\n    \"satcount\": 3156\n  },\n  \"above\": [\n    {\n      \"satid\": 7247,\n      \"satname\": \"string\",\n      \"intDesignator\": \"string\",\n      \"launchDate\": \"string\",\n      \"satlat\": 2062.4488138102415,\n      \"satlng\": 643.9488900756818,\n      \"satalt\": 6575.0511524227695\n    },\n    {\n      \"satid\": 3595,\n      \"satname\": \"string\",\n      \"intDesignator\": \"string\",\n      \"launchDate\": \"string\",\n      \"satlat\": 7662.912610988726,\n      \"satlng\": 938.9671147591938,\n      \"satalt\": 3866.372262747896\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.n2yo.com/rest/v1/satellite",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "901215ea-189a-4de8-b3fa-77b939b937f6",
+    "name": "N2YO Satellite Tracking Above API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The N2YO REST API provides data for software and web developers to build satellite tracking and prediction applications. The REST API v1 is free but transaction limited. All endpoints require an apiKey query parameter.\n\nContact Support:\n Name: N2YO Support",
+      "type": "text/plain"
+    }
+  }
+}

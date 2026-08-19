@@ -1,0 +1,153 @@
+{
+  "item": [
+    {
+      "id": "217a1c39-2e52-455b-938a-ebd635056f93",
+      "name": "TLE",
+      "description": {
+        "content": "Two-Line Element data for satellites.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "53a8a3de-962d-41e8-a92f-1460e6d34b81",
+          "name": "Get TLE for a satellite",
+          "request": {
+            "name": "Get TLE for a satellite",
+            "description": {
+              "content": "Retrieves the Two Line Element set for a satellite by NORAD ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tle",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "(Required) Your N2YO API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) NORAD catalog number for the satellite."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9fe668e5-79e9-4947-b3ec-f60da16f1489",
+              "name": "TLE data for the satellite.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tle",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) NORAD catalog number for the satellite."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"satid\": 2166,\n    \"satname\": \"string\",\n    \"transactionscount\": 1230\n  },\n  \"tle\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.n2yo.com/rest/v1/satellite",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bf0df031-5bd7-456f-9337-55d6bd7db4a5",
+    "name": "N2YO Satellite Tracking Above TLE API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The N2YO REST API provides data for software and web developers to build satellite tracking and prediction applications. The REST API v1 is free but transaction limited. All endpoints require an apiKey query parameter.\n\nContact Support:\n Name: N2YO Support",
+      "type": "text/plain"
+    }
+  }
+}

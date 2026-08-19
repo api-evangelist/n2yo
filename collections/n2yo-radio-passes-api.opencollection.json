@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "N2YO Satellite Tracking Above Radio Passes API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Radio Passes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get radio passes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.n2yo.com/rest/v1/satellite/radiopasses/:id/:observer_lat/:observer_lng/:observer_alt/:days/:min_elevation",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "NORAD catalog number for the satellite."
+              },
+              {
+                "name": "observer_lat",
+                "value": "",
+                "type": "path",
+                "description": "Observer latitude in decimal degrees."
+              },
+              {
+                "name": "observer_lng",
+                "value": "",
+                "type": "path",
+                "description": "Observer longitude in decimal degrees."
+              },
+              {
+                "name": "observer_alt",
+                "value": "",
+                "type": "path",
+                "description": "Observer altitude in meters above sea level."
+              },
+              {
+                "name": "days",
+                "value": "",
+                "type": "path",
+                "description": "Days of prediction (max 10)."
+              },
+              {
+                "name": "min_elevation",
+                "value": "",
+                "type": "path",
+                "description": "Minimum elevation in degrees."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Your N2YO API key."
+              }
+            ]
+          },
+          "docs": "Predicts radio-communication passes for a satellite."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

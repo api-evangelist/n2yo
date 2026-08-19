@@ -1,0 +1,233 @@
+{
+  "item": [
+    {
+      "id": "0ec855e9-e001-49ee-a001-402e5b206bfa",
+      "name": "Visual Passes",
+      "description": {
+        "content": "Optically visible satellite pass predictions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3fb2a32b-3b0d-4d60-bb02-5b2f1454b82c",
+          "name": "Get visual passes",
+          "request": {
+            "name": "Get visual passes",
+            "description": {
+              "content": "Predicts optically visible satellite passes over an observer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "visualpasses",
+                ":id",
+                ":observer_lat",
+                ":observer_lng",
+                ":observer_alt",
+                ":days",
+                ":min_visibility"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "(Required) Your N2YO API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) NORAD catalog number for the satellite."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lat",
+                  "description": "(Required) Observer latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lng",
+                  "description": "(Required) Observer longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_alt",
+                  "description": "(Required) Observer altitude in meters above sea level."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "days",
+                  "description": "(Required) Days of prediction (max 10)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "min_visibility",
+                  "description": "(Required) Minimum visible seconds for a returned pass."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8bd0936f-e223-41c6-b362-d401360766b1",
+              "name": "Visual pass predictions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "visualpasses",
+                    ":id",
+                    ":observer_lat",
+                    ":observer_lng",
+                    ":observer_alt",
+                    ":days",
+                    ":min_visibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) NORAD catalog number for the satellite."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lat",
+                      "description": "(Required) Observer latitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lng",
+                      "description": "(Required) Observer longitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_alt",
+                      "description": "(Required) Observer altitude in meters above sea level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "days",
+                      "description": "(Required) Days of prediction (max 10)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "min_visibility",
+                      "description": "(Required) Minimum visible seconds for a returned pass."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"satid\": 9351,\n    \"satname\": \"string\",\n    \"transactionscount\": 5504,\n    \"passescount\": 1519\n  },\n  \"passes\": [\n    {\n      \"startAz\": 233.0880973925009,\n      \"startAzCompass\": \"string\",\n      \"startEl\": 9386.182805805287,\n      \"startUTC\": 2149,\n      \"maxAz\": 7043.390609973619,\n      \"maxAzCompass\": \"string\",\n      \"maxEl\": 9260.556857196852,\n      \"maxUTC\": 1042,\n      \"endAz\": 9186.24372356137,\n      \"endAzCompass\": \"string\",\n      \"endEl\": 897.475125104884,\n      \"endUTC\": 7396,\n      \"mag\": 6023.281280498589,\n      \"duration\": 4747\n    },\n    {\n      \"startAz\": 2625.28014818409,\n      \"startAzCompass\": \"string\",\n      \"startEl\": 2473.1256348627926,\n      \"startUTC\": 4728,\n      \"maxAz\": 9828.297725879056,\n      \"maxAzCompass\": \"string\",\n      \"maxEl\": 1842.3249545815668,\n      \"maxUTC\": 9225,\n      \"endAz\": 962.7675837876204,\n      \"endAzCompass\": \"string\",\n      \"endEl\": 2389.6481288385507,\n      \"endUTC\": 2787,\n      \"mag\": 771.2717914685074,\n      \"duration\": 6410\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.n2yo.com/rest/v1/satellite",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0127e101-2746-4a35-b518-77bdb062ef18",
+    "name": "N2YO Satellite Tracking Above Visual Passes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The N2YO REST API provides data for software and web developers to build satellite tracking and prediction applications. The REST API v1 is free but transaction limited. All endpoints require an apiKey query parameter.\n\nContact Support:\n Name: N2YO Support",
+      "type": "text/plain"
+    }
+  }
+}

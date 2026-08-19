@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "N2YO Satellite Tracking Above TLE API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TLE",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get TLE for a satellite",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.n2yo.com/rest/v1/satellite/tle/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "NORAD catalog number for the satellite."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Your N2YO API key."
+              }
+            ]
+          },
+          "docs": "Retrieves the Two Line Element set for a satellite by NORAD ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

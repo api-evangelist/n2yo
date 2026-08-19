@@ -1,0 +1,233 @@
+{
+  "item": [
+    {
+      "id": "a1d6401d-67d3-4a6f-aa97-3d4343c1a2ad",
+      "name": "Radio Passes",
+      "description": {
+        "content": "Radio-communication satellite pass predictions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df2d72de-f5ad-4456-bc7f-aeab86b7be26",
+          "name": "Get radio passes",
+          "request": {
+            "name": "Get radio passes",
+            "description": {
+              "content": "Predicts radio-communication passes for a satellite.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "radiopasses",
+                ":id",
+                ":observer_lat",
+                ":observer_lng",
+                ":observer_alt",
+                ":days",
+                ":min_elevation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "(Required) Your N2YO API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) NORAD catalog number for the satellite."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lat",
+                  "description": "(Required) Observer latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_lng",
+                  "description": "(Required) Observer longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<float>",
+                  "key": "observer_alt",
+                  "description": "(Required) Observer altitude in meters above sea level."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "days",
+                  "description": "(Required) Days of prediction (max 10)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "min_elevation",
+                  "description": "(Required) Minimum elevation in degrees."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38c9442a-10c0-4591-b96e-96501d0418ad",
+              "name": "Radio pass predictions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "radiopasses",
+                    ":id",
+                    ":observer_lat",
+                    ":observer_lng",
+                    ":observer_alt",
+                    ":days",
+                    ":min_elevation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiKey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiKey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) NORAD catalog number for the satellite."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lat",
+                      "description": "(Required) Observer latitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_lng",
+                      "description": "(Required) Observer longitude in decimal degrees."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<float>",
+                      "key": "observer_alt",
+                      "description": "(Required) Observer altitude in meters above sea level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "days",
+                      "description": "(Required) Days of prediction (max 10)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "min_elevation",
+                      "description": "(Required) Minimum elevation in degrees."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"satid\": 1094,\n    \"satname\": \"string\",\n    \"transactionscount\": 4173,\n    \"passescount\": 5823\n  },\n  \"passes\": [\n    {\n      \"startAz\": 4531.794295229578,\n      \"startAzCompass\": \"string\",\n      \"startUTC\": 6405,\n      \"maxAz\": 8306.481897551907,\n      \"maxAzCompass\": \"string\",\n      \"maxEl\": 1047.9907197111127,\n      \"maxUTC\": 9684,\n      \"endAz\": 4845.96193574688,\n      \"endAzCompass\": \"string\",\n      \"endUTC\": 3957\n    },\n    {\n      \"startAz\": 9951.144984657074,\n      \"startAzCompass\": \"string\",\n      \"startUTC\": 9663,\n      \"maxAz\": 2182.285364819663,\n      \"maxAzCompass\": \"string\",\n      \"maxEl\": 2268.0547368381744,\n      \"maxUTC\": 9497,\n      \"endAz\": 8732.42222210633,\n      \"endAzCompass\": \"string\",\n      \"endUTC\": 9379\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.n2yo.com/rest/v1/satellite",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7be39b37-2be9-4afb-a7a9-f18a0d7ae8e8",
+    "name": "N2YO Satellite Tracking Above Radio Passes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The N2YO REST API provides data for software and web developers to build satellite tracking and prediction applications. The REST API v1 is free but transaction limited. All endpoints require an apiKey query parameter.\n\nContact Support:\n Name: N2YO Support",
+      "type": "text/plain"
+    }
+  }
+}

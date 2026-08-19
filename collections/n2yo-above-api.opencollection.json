@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "N2YO Satellite Tracking Above API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apiKey",
+      "value": "{{apiKey}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Above",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "What's up - satellites overhead",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.n2yo.com/rest/v1/satellite/above/:observer_lat/:observer_lng/:observer_alt/:search_radius/:category_id",
+            "params": [
+              {
+                "name": "observer_lat",
+                "value": "",
+                "type": "path",
+                "description": "Observer latitude in decimal degrees."
+              },
+              {
+                "name": "observer_lng",
+                "value": "",
+                "type": "path",
+                "description": "Observer longitude in decimal degrees."
+              },
+              {
+                "name": "observer_alt",
+                "value": "",
+                "type": "path",
+                "description": "Observer altitude in meters above sea level."
+              },
+              {
+                "name": "search_radius",
+                "value": "",
+                "type": "path",
+                "description": "Search radius in degrees (0-90)."
+              },
+              {
+                "name": "category_id",
+                "value": "",
+                "type": "path",
+                "description": "Satellite category id (0 returns all categories)."
+              },
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "query",
+                "description": "Your N2YO API key."
+              }
+            ]
+          },
+          "docs": "Returns all satellites within a search radius above an observer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
