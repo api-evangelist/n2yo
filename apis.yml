@@ -4,6 +4,18 @@ description: >-
   N2YO.com is a website that provides real-time tracking and information about satellites and space stations using space
   surveillance data from Space Track, operated by the US Air Force Space Command.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
