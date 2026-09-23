@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: N2YO Satellite Tracking Above TLE API
+  title: N2YO Satellite Tracking TLE API
   description: The N2YO REST API provides data for software and web developers to build satellite tracking and prediction applications. The REST API v1 is free but transaction limited. All endpoints require an apiKey query parameter.
   version: 1.0.0
   contact:
