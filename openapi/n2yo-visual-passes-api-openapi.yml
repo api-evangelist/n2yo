@@ -52,7 +52,69 @@ paths:
               schema:
                 $ref: '#/components/schemas/VisualPassesResponse'
 components:
+  parameters:
+    SatelliteId:
+      name: id
+      in: path
+      required: true
+      description: NORAD catalog number for the satellite.
+      schema:
+        type: integer
+    ObserverLng:
+      name: observer_lng
+      in: path
+      required: true
+      description: Observer longitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      description: Your N2YO API key.
+      schema:
+        type: string
+    ObserverLat:
+      name: observer_lat
+      in: path
+      required: true
+      description: Observer latitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    ObserverAlt:
+      name: observer_alt
+      in: path
+      required: true
+      description: Observer altitude in meters above sea level.
+      schema:
+        type: number
+        format: float
   schemas:
+    SatelliteInfo:
+      type: object
+      properties:
+        satid:
+          type: integer
+        satname:
+          type: string
+        transactionscount:
+          type: integer
+    VisualPassesResponse:
+      type: object
+      properties:
+        info:
+          allOf:
+          - $ref: '#/components/schemas/SatelliteInfo'
+          - type: object
+            properties:
+              passescount:
+                type: integer
+        passes:
+          type: array
+          items:
+            $ref: '#/components/schemas/VisualPass'
     VisualPass:
       type: object
       properties:
@@ -84,68 +146,6 @@ components:
           type: number
         duration:
           type: integer
-    VisualPassesResponse:
-      type: object
-      properties:
-        info:
-          allOf:
-          - $ref: '#/components/schemas/SatelliteInfo'
-          - type: object
-            properties:
-              passescount:
-                type: integer
-        passes:
-          type: array
-          items:
-            $ref: '#/components/schemas/VisualPass'
-    SatelliteInfo:
-      type: object
-      properties:
-        satid:
-          type: integer
-        satname:
-          type: string
-        transactionscount:
-          type: integer
-  parameters:
-    ObserverAlt:
-      name: observer_alt
-      in: path
-      required: true
-      description: Observer altitude in meters above sea level.
-      schema:
-        type: number
-        format: float
-    SatelliteId:
-      name: id
-      in: path
-      required: true
-      description: NORAD catalog number for the satellite.
-      schema:
-        type: integer
-    ObserverLat:
-      name: observer_lat
-      in: path
-      required: true
-      description: Observer latitude in decimal degrees.
-      schema:
-        type: number
-        format: float
-    ObserverLng:
-      name: observer_lng
-      in: path
-      required: true
-      description: Observer longitude in decimal degrees.
-      schema:
-        type: number
-        format: float
-    ApiKey:
-      name: apiKey
-      in: query
-      required: true
-      description: Your N2YO API key.
-      schema:
-        type: string
   securitySchemes:
     apiKey:
       type: apiKey

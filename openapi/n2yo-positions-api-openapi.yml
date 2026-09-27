@@ -47,6 +47,24 @@ paths:
                 $ref: '#/components/schemas/PositionsResponse'
 components:
   schemas:
+    PositionsResponse:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/SatelliteInfo'
+        positions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Position'
+    SatelliteInfo:
+      type: object
+      properties:
+        satid:
+          type: integer
+        satname:
+          type: string
+        transactionscount:
+          type: integer
     Position:
       type: object
       properties:
@@ -68,33 +86,7 @@ components:
           type: integer
         eclipsed:
           type: boolean
-    PositionsResponse:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/SatelliteInfo'
-        positions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Position'
-    SatelliteInfo:
-      type: object
-      properties:
-        satid:
-          type: integer
-        satname:
-          type: string
-        transactionscount:
-          type: integer
   parameters:
-    ObserverAlt:
-      name: observer_alt
-      in: path
-      required: true
-      description: Observer altitude in meters above sea level.
-      schema:
-        type: number
-        format: float
     SatelliteId:
       name: id
       in: path
@@ -102,14 +94,6 @@ components:
       description: NORAD catalog number for the satellite.
       schema:
         type: integer
-    ObserverLat:
-      name: observer_lat
-      in: path
-      required: true
-      description: Observer latitude in decimal degrees.
-      schema:
-        type: number
-        format: float
     ObserverLng:
       name: observer_lng
       in: path
@@ -125,6 +109,22 @@ components:
       description: Your N2YO API key.
       schema:
         type: string
+    ObserverLat:
+      name: observer_lat
+      in: path
+      required: true
+      description: Observer latitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    ObserverAlt:
+      name: observer_alt
+      in: path
+      required: true
+      description: Observer altitude in meters above sea level.
+      schema:
+        type: number
+        format: float
   securitySchemes:
     apiKey:
       type: apiKey

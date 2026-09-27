@@ -53,14 +53,6 @@ paths:
                 $ref: '#/components/schemas/RadioPassesResponse'
 components:
   parameters:
-    ObserverAlt:
-      name: observer_alt
-      in: path
-      required: true
-      description: Observer altitude in meters above sea level.
-      schema:
-        type: number
-        format: float
     SatelliteId:
       name: id
       in: path
@@ -68,14 +60,6 @@ components:
       description: NORAD catalog number for the satellite.
       schema:
         type: integer
-    ObserverLat:
-      name: observer_lat
-      in: path
-      required: true
-      description: Observer latitude in decimal degrees.
-      schema:
-        type: number
-        format: float
     ObserverLng:
       name: observer_lng
       in: path
@@ -91,21 +75,23 @@ components:
       description: Your N2YO API key.
       schema:
         type: string
+    ObserverLat:
+      name: observer_lat
+      in: path
+      required: true
+      description: Observer latitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    ObserverAlt:
+      name: observer_alt
+      in: path
+      required: true
+      description: Observer altitude in meters above sea level.
+      schema:
+        type: number
+        format: float
   schemas:
-    RadioPassesResponse:
-      type: object
-      properties:
-        info:
-          allOf:
-          - $ref: '#/components/schemas/SatelliteInfo'
-          - type: object
-            properties:
-              passescount:
-                type: integer
-        passes:
-          type: array
-          items:
-            $ref: '#/components/schemas/RadioPass'
     RadioPass:
       type: object
       properties:
@@ -138,6 +124,20 @@ components:
           type: string
         transactionscount:
           type: integer
+    RadioPassesResponse:
+      type: object
+      properties:
+        info:
+          allOf:
+          - $ref: '#/components/schemas/SatelliteInfo'
+          - type: object
+            properties:
+              passescount:
+                type: integer
+        passes:
+          type: array
+          items:
+            $ref: '#/components/schemas/RadioPass'
   securitySchemes:
     apiKey:
       type: apiKey
