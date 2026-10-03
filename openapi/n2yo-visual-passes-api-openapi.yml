@@ -53,13 +53,6 @@ paths:
                 $ref: '#/components/schemas/VisualPassesResponse'
 components:
   parameters:
-    SatelliteId:
-      name: id
-      in: path
-      required: true
-      description: NORAD catalog number for the satellite.
-      schema:
-        type: integer
     ObserverLng:
       name: observer_lng
       in: path
@@ -75,6 +68,13 @@ components:
       description: Your N2YO API key.
       schema:
         type: string
+    SatelliteId:
+      name: id
+      in: path
+      required: true
+      description: NORAD catalog number for the satellite.
+      schema:
+        type: integer
     ObserverLat:
       name: observer_lat
       in: path
@@ -92,29 +92,6 @@ components:
         type: number
         format: float
   schemas:
-    SatelliteInfo:
-      type: object
-      properties:
-        satid:
-          type: integer
-        satname:
-          type: string
-        transactionscount:
-          type: integer
-    VisualPassesResponse:
-      type: object
-      properties:
-        info:
-          allOf:
-          - $ref: '#/components/schemas/SatelliteInfo'
-          - type: object
-            properties:
-              passescount:
-                type: integer
-        passes:
-          type: array
-          items:
-            $ref: '#/components/schemas/VisualPass'
     VisualPass:
       type: object
       properties:
@@ -145,6 +122,29 @@ components:
         mag:
           type: number
         duration:
+          type: integer
+    VisualPassesResponse:
+      type: object
+      properties:
+        info:
+          allOf:
+          - $ref: '#/components/schemas/SatelliteInfo'
+          - type: object
+            properties:
+              passescount:
+                type: integer
+        passes:
+          type: array
+          items:
+            $ref: '#/components/schemas/VisualPass'
+    SatelliteInfo:
+      type: object
+      properties:
+        satid:
+          type: integer
+        satname:
+          type: string
+        transactionscount:
           type: integer
   securitySchemes:
     apiKey:

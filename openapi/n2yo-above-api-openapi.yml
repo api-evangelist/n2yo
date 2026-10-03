@@ -52,23 +52,39 @@ paths:
               schema:
                 $ref: '#/components/schemas/AboveResponse'
 components:
+  parameters:
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      description: Your N2YO API key.
+      schema:
+        type: string
+    ObserverLng:
+      name: observer_lng
+      in: path
+      required: true
+      description: Observer longitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    ObserverLat:
+      name: observer_lat
+      in: path
+      required: true
+      description: Observer latitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    ObserverAlt:
+      name: observer_alt
+      in: path
+      required: true
+      description: Observer altitude in meters above sea level.
+      schema:
+        type: number
+        format: float
   schemas:
-    AboveResponse:
-      type: object
-      properties:
-        info:
-          type: object
-          properties:
-            category:
-              type: string
-            transactionscount:
-              type: integer
-            satcount:
-              type: integer
-        above:
-          type: array
-          items:
-            $ref: '#/components/schemas/AboveSatellite'
     AboveSatellite:
       type: object
       properties:
@@ -86,38 +102,22 @@ components:
           type: number
         satalt:
           type: number
-  parameters:
-    ObserverLng:
-      name: observer_lng
-      in: path
-      required: true
-      description: Observer longitude in decimal degrees.
-      schema:
-        type: number
-        format: float
-    ApiKey:
-      name: apiKey
-      in: query
-      required: true
-      description: Your N2YO API key.
-      schema:
-        type: string
-    ObserverLat:
-      name: observer_lat
-      in: path
-      required: true
-      description: Observer latitude in decimal degrees.
-      schema:
-        type: number
-        format: float
-    ObserverAlt:
-      name: observer_alt
-      in: path
-      required: true
-      description: Observer altitude in meters above sea level.
-      schema:
-        type: number
-        format: float
+    AboveResponse:
+      type: object
+      properties:
+        info:
+          type: object
+          properties:
+            category:
+              type: string
+            transactionscount:
+              type: integer
+            satcount:
+              type: integer
+        above:
+          type: array
+          items:
+            $ref: '#/components/schemas/AboveSatellite'
   securitySchemes:
     apiKey:
       type: apiKey
