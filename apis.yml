@@ -39,10 +39,12 @@ tags:
   - Satellite
   - Space
   - Tracking
+  - Satellite Tracking
 tags_raw:
   - Satellites
   - Space
   - Tracking
+  - Satellite Tracking
 apis:
 - aid: n2yo:n2yo-above-api
   name: N2YO Above API
