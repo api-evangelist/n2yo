@@ -37,14 +37,6 @@ paths:
                 $ref: '#/components/schemas/TLEResponse'
 components:
   schemas:
-    TLEResponse:
-      type: object
-      properties:
-        info:
-          $ref: '#/components/schemas/SatelliteInfo'
-        tle:
-          type: string
-          description: Two Line Element set for the satellite.
     SatelliteInfo:
       type: object
       properties:
@@ -54,6 +46,14 @@ components:
           type: string
         transactionscount:
           type: integer
+    TLEResponse:
+      type: object
+      properties:
+        info:
+          $ref: '#/components/schemas/SatelliteInfo'
+        tle:
+          type: string
+          description: Two Line Element set for the satellite.
   parameters:
     ApiKey:
       name: apiKey

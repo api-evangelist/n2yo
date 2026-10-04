@@ -47,11 +47,11 @@ paths:
                 $ref: '#/components/schemas/PositionsResponse'
 components:
   parameters:
-    ObserverLng:
-      name: observer_lng
+    ObserverLat:
+      name: observer_lat
       in: path
       required: true
-      description: Observer longitude in decimal degrees.
+      description: Observer latitude in decimal degrees.
       schema:
         type: number
         format: float
@@ -62,21 +62,6 @@ components:
       description: Your N2YO API key.
       schema:
         type: string
-    SatelliteId:
-      name: id
-      in: path
-      required: true
-      description: NORAD catalog number for the satellite.
-      schema:
-        type: integer
-    ObserverLat:
-      name: observer_lat
-      in: path
-      required: true
-      description: Observer latitude in decimal degrees.
-      schema:
-        type: number
-        format: float
     ObserverAlt:
       name: observer_alt
       in: path
@@ -85,6 +70,21 @@ components:
       schema:
         type: number
         format: float
+    ObserverLng:
+      name: observer_lng
+      in: path
+      required: true
+      description: Observer longitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    SatelliteId:
+      name: id
+      in: path
+      required: true
+      description: NORAD catalog number for the satellite.
+      schema:
+        type: integer
   schemas:
     PositionsResponse:
       type: object
@@ -95,6 +95,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Position'
+    SatelliteInfo:
+      type: object
+      properties:
+        satid:
+          type: integer
+        satname:
+          type: string
+        transactionscount:
+          type: integer
     Position:
       type: object
       properties:
@@ -116,15 +125,6 @@ components:
           type: integer
         eclipsed:
           type: boolean
-    SatelliteInfo:
-      type: object
-      properties:
-        satid:
-          type: integer
-        satname:
-          type: string
-        transactionscount:
-          type: integer
   securitySchemes:
     apiKey:
       type: apiKey

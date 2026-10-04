@@ -53,21 +53,6 @@ paths:
                 $ref: '#/components/schemas/AboveResponse'
 components:
   parameters:
-    ApiKey:
-      name: apiKey
-      in: query
-      required: true
-      description: Your N2YO API key.
-      schema:
-        type: string
-    ObserverLng:
-      name: observer_lng
-      in: path
-      required: true
-      description: Observer longitude in decimal degrees.
-      schema:
-        type: number
-        format: float
     ObserverLat:
       name: observer_lat
       in: path
@@ -76,11 +61,26 @@ components:
       schema:
         type: number
         format: float
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      description: Your N2YO API key.
+      schema:
+        type: string
     ObserverAlt:
       name: observer_alt
       in: path
       required: true
       description: Observer altitude in meters above sea level.
+      schema:
+        type: number
+        format: float
+    ObserverLng:
+      name: observer_lng
+      in: path
+      required: true
+      description: Observer longitude in decimal degrees.
       schema:
         type: number
         format: float
