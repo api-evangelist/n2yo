@@ -127,6 +127,12 @@ apis:
   - type: Login
     url: https://www.n2yo.com/login/
 common:
+  - type: Plans
+    url: plans/n2yo-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/n2yo-rate-limits.yml
+  - type: FinOps
+    url: finops/n2yo-finops.yml
   - type: AgenticAccess
     url: agentic-access/n2yo-agentic-access.yml
   - type: DomainSecurity
