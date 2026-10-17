@@ -55,13 +55,6 @@ components:
           type: string
           description: Two Line Element set for the satellite.
   parameters:
-    ApiKey:
-      name: apiKey
-      in: query
-      required: true
-      description: Your N2YO API key.
-      schema:
-        type: string
     SatelliteId:
       name: id
       in: path
@@ -69,6 +62,13 @@ components:
       description: NORAD catalog number for the satellite.
       schema:
         type: integer
+    ApiKey:
+      name: apiKey
+      in: query
+      required: true
+      description: Your N2YO API key.
+      schema:
+        type: string
   securitySchemes:
     apiKey:
       type: apiKey

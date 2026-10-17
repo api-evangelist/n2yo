@@ -53,11 +53,11 @@ paths:
                 $ref: '#/components/schemas/AboveResponse'
 components:
   parameters:
-    ObserverLat:
-      name: observer_lat
+    ObserverLng:
+      name: observer_lng
       in: path
       required: true
-      description: Observer latitude in decimal degrees.
+      description: Observer longitude in decimal degrees.
       schema:
         type: number
         format: float
@@ -76,11 +76,11 @@ components:
       schema:
         type: number
         format: float
-    ObserverLng:
-      name: observer_lng
+    ObserverLat:
+      name: observer_lat
       in: path
       required: true
-      description: Observer longitude in decimal degrees.
+      description: Observer latitude in decimal degrees.
       schema:
         type: number
         format: float
